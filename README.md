@@ -2,57 +2,60 @@
 
 https://www.kaggle.com/datasets/architsharma01/loan-approval-prediction-dataset
 
-1. Library Imports and Data Loading
-Importing Core Libraries:
-The notebook starts by importing essential Python libraries for data analysis and visualization:
 
-Pandas: For reading the dataset and handling data frames.
-NumPy: For numerical computations.
-Matplotlib & Seaborn: For plotting graphs and visualizing data distributions.
-Scipy.stats: Likely used for statistical analysis and outlier detection.
-missingno: For visualizing missing data patterns.
-Loading the Dataset:
-The dataset is loaded using pd.read_csv("data/loan_approval_dataset.csv"). After loading:
+This project aims to predict loan approval outcomes using machine learning. The following sections detail the workflow.
 
-The first three rows of the dataset are displayed (using df.head(3)) to give a quick glance at the data.
-The shape (number of rows and columns) is printed to show the dataset dimensions.
-A summary of the DataFrame’s information (data types, non-null counts) is printed using df.info.
-2. Data Exploration and Visualization
-Exploratory Data Analysis (EDA):
-The code performs EDA by:
+## 1. Library Imports and Data Loading
 
-Generating various plots (e.g., histograms, box plots) to visualize the distributions of numerical features.
-Using Seaborn for more sophisticated statistical plots to uncover patterns and correlations between features.
-Leveraging missingno to create visual matrices or bar charts that highlight missing values across different columns, which helps in understanding the quality and completeness of the dataset.
-Preliminary Statistical Analysis:
-The notebook likely includes basic statistical measures (mean, median, mode, standard deviation) to understand the central tendencies and spread of the data.
+- **Importing Core Libraries:**
+  - **Pandas, NumPy:** For data manipulation and numerical computations.
+  - **Matplotlib & Seaborn:** For data visualization.
+  - **SciPy (stats):** For statistical analysis.
+  - **missingno:** For visualizing missing data.
+  
+- **Dataset Loading:**
+  - The dataset `data/loan_approval_dataset.csv` is loaded using Pandas.
+  - The first three rows are displayed to provide an initial view of the data.
+  - The dimensions (number of rows and columns) are printed.
+  - A summary of the dataset, including data types and non-null counts, is generated using `df.info`.
 
-3. Data Cleaning and Feature Engineering
-Handling Missing Values:
-The code examines missing values within the dataset. Depending on the amount and pattern of missingness, it uses appropriate techniques:
+## 2. Data Exploration and Visualization
 
-Imputation: Filling in missing data with mean/median/mode or using more advanced imputation methods.
-Removal: Dropping rows or columns if the missing data is deemed too extensive or non-critical.
-Encoding Categorical Variables:
-Since machine learning models require numerical input:
+- **Exploratory Data Analysis (EDA):**
+  - Visualizations such as histograms and box plots are created to analyze feature distributions.
+  - Seaborn is used to generate statistical plots to reveal underlying patterns and relationships.
+  - The `missingno` library is utilized to visualize missing data patterns, highlighting data quality issues.
 
-The notebook applies One-Hot Encoding (using sklearn.preprocessing.OneHotEncoder) to transform categorical features into a binary format.
-The code uses ColumnTransformer to selectively apply transformations to different types of columns (numeric vs. categorical).
-Scaling Features:
-Numerical features are standardized using StandardScaler from scikit-learn. This step is crucial for algorithms that are sensitive to the scale of input data, such as Support Vector Machines (SVM).
+## 3. Data Cleaning and Feature Engineering
 
-4. Model Building
-Importing Model-Related Libraries:
-A dedicated cell (e.g., cell 15) imports various machine learning models and tools:
+- **Handling Missing Values:**
+  - Missing data is handled through imputation (using strategies like mean, median, or mode) or by dropping non-critical rows/columns.
 
-Classification Models:
-K-Nearest Neighbors (KNN) – a simple instance-based learning method.
-Logistic Regression – a linear model for binary classification.
-Support Vector Machine (SVM) – for finding an optimal decision boundary.
-Naïve Bayes (GaussianNB, MultinomialNB, BernoulliNB) – probabilistic classifiers.
-Pipeline and ColumnTransformer:
-These tools are used to streamline the workflow by combining preprocessing (scaling, encoding) and model training into a single pipeline.
-Hyperparameter Tuning:
-The code imports GridSearchCV to perform an exhaustive search over specified parameter values for the models, ensuring that the best hyperparameters are selected based on cross-validation performance.
-Evaluation Metrics:
-Various evaluation functions are imported from sklearn.metrics, including functions to compute accuracy, precision, recall, F1-score, and ROC AUC.
+- **Encoding Categorical Variables:**
+  - Categorical features are transformed into a numerical format using One-Hot Encoding.
+  - A `ColumnTransformer` is used to apply appropriate transformations to both categorical and numerical columns.
+
+- **Feature Scaling:**
+  - Numerical features are standardized using `StandardScaler` to improve the performance of machine learning algorithms.
+
+## 4. Model Building
+
+- **Model and Pipeline Setup:**
+  - Multiple classifiers are imported, including:
+    - **K-Nearest Neighbors (KNN)**
+    - **Logistic Regression**
+    - **Support Vector Machine (SVM)**
+    - **Naïve Bayes Variants** (GaussianNB, MultinomialNB, BernoulliNB)
+  - A pipeline is created that integrates preprocessing steps (encoding, scaling) with model training.
+  
+- **Hyperparameter Tuning:**
+  - `GridSearchCV` is used to search for the best model parameters via cross-validation.
+
+## 5. Model Evaluation
+
+- **Evaluation Metrics:**
+  - **Confusion Matrix:** Displays the counts of true vs. predicted classifications.
+  - **Classification Report:** Provides detailed metrics such as precision, recall, F1-score, and support for each class.
+  - **Accuracy Score:** Measures the overall proportion of correct predictions.
+  - **ROC AUC Score:** Evaluates the model’s ability to distinguish between classes.
+
